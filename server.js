@@ -29,7 +29,9 @@ const User = mongoose.model('User', userSchema);
 
 // Initialize Web3
 const web3 = new Web3(config.WEB3_PROVIDER);
-const account = web3.eth.accounts.privateKeyToAccount(config.PRIVATE_KEY);
+const account = web3.eth.accounts.privateKeyToAccount(
+  `0x${config.PRIVATE_KEY}`
+);
 web3.eth.accounts.wallet.add(account);
 
 // Initialize bot
