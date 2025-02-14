@@ -1,6 +1,6 @@
 const express = require('express');
 const TelegramBot = require('node-telegram-bot-api');
-const Web3 = require('web3');
+const { Web3 } = require('web3');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
