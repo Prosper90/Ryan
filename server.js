@@ -1,8 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const TelegramBot = require('node-telegram-bot-api');
 const { Web3 } = require('web3');
 const mongoose = require('mongoose');
-require('dotenv').config();
 
 // Config
 const config = {
@@ -38,12 +38,16 @@ web3.eth.accounts.wallet.add(account);
 const bot = new TelegramBot(config.TELEGRAM_BOT_TOKEN, { polling: true });
 
 // Connect to MongoDB
+// mongoose.connect(config.MONGODB_URI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// })
+// .then(() => console.log('Connected to MongoDB'))
+// .catch(err => console.error('MongoDB connection error:', err));
+
 mongoose.connect(config.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('MongoDB connection error:', err));
+  useNewUrlParser: true,
+}).then(() => console.log('Connected to MongoDB')).catch((err) => console.error('MongoDB connection error:', err));
 
 // Contract ABI
 const contractABI = [
